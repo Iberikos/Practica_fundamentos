@@ -36,6 +36,18 @@ class LoginViewController: UIViewController {
                 print("We got a valid token!")
                 print(token)
                 
+                DispatchQueue.main.async {
+                    //UIApplication.shared.keyWindow?.rootViewController = HomeTabBarController()
+                    
+                    UIApplication
+                        .shared
+                        .connectedScenes
+                        .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
+                        .first?
+                        .rootViewController = HomeTabBarController() 
+                    ///Forma oficial que tiene apple de movernos desde el Login al homeTabBar
+                }
+                
             } else {
                 print("Login Error: ", error?.localizedDescription ?? "")
             }

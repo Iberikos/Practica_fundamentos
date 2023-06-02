@@ -18,15 +18,15 @@ class HomeTabBarController: UITabBarController {
     }
     
     private func setupTabs(){
-        let tableViewController = TableViewController()
+        let navigationController = UINavigationController(rootViewController: TableViewController())
         let tabImage = UIImage(systemName: "text.justify")!
-        tableViewController.tabBarItem = UITabBarItem(title: "TableView", image: tabImage, tag: 0)  ///aqui le damos un titulo y una imagen del sistema, los tag como solo tenemos uno marcamos 0 pero si hay más hay que tener en cuenta que no pyueden ser iguales
+        navigationController.tabBarItem = UITabBarItem(title: "TableView", image: tabImage, tag: 0)  ///aqui le damos un titulo y una imagen del sistema, los tag como solo tenemos uno marcamos 0 pero si hay más hay que tener en cuenta que no pyueden ser iguales
         
         let collectionViewController = CollectorViewController()
         let tabImg = UIImage(systemName: "square.grid.3x3.topleft.filled")!
         collectionViewController.tabBarItem = UITabBarItem(title: "CollectionView", image: tabImg, tag: 1)
         
-        viewControllers = [tableViewController, collectionViewController]     ///cogemos la array de ViewControllers pero como solo hay uno cogemos ese, actualizamos y metemos el otro ViewController
+        viewControllers = [navigationController, collectionViewController]     ///cogemos la array de ViewControllers pero como solo hay uno cogemos ese, actualizamos y metemos el otro ViewController
     }
 
     private func setupLayout(){

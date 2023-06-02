@@ -15,7 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowsScene = (scene as? UIWindowScene) else { return }  ///Guardamos la "escena" con el nombre 'windowsScene' que hereda de UIwindowScene
         window = UIWindow(windowScene: windowsScene)        //Aquí lo inicializamos
-        window?.rootViewController = LoginViewController() ///Le decimos que la app debe iniciar con la vista TableViewController, hemos cambiado y elejimos que inicie con el "HomeTabBarController"
+        
+        if LocalDataLayer.shared.isUserLogged() {
+            window?.rootViewController = HomeTabBarController()
+        } else {
+            window?.rootViewController = LoginViewController() ///Le decimos que la app debe iniciar con la vista TableViewController, hemos cambiado y elejimos que inicie con el "HomeTabBarController"
+        }
+
         window?.makeKeyAndVisible()         ///RECUERDA!!! hay que borrar el 'Main storyboard' del proyecto y el info tambien
     }
 
