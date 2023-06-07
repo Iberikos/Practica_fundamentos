@@ -19,6 +19,29 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emailTextField.center.x -= view.bounds.width           ///esto hace que salga el cuadro de login desde fuera hacia adentro
+        passwordTextField.center.x -= view.bounds.width
+        loginButton.alpha = 0                   ///"alpha" es una funcion para indicar la visibilidad 0= nada, 1 = 100%
+        
+        UIView.animate(withDuration: 2,
+                       delay: 0,
+                       usingSpringWithDamping: 0.75,
+                       initialSpringVelocity: 0,
+                       options: []) {
+            self.emailTextField.center.x += self.view.bounds.width
+            self.passwordTextField.center.x += self.view.bounds.width
+
+        }
+        
+        UIView.animate(withDuration: 5) {
+            self.loginButton.alpha = 1
+        }
+        
+    }
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         guard let email = emailTextField.text, !email.isEmpty else {
             print("email is empty")

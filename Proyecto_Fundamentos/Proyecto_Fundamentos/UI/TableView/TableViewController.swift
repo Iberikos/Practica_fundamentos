@@ -24,7 +24,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self               ///Importante
         tableView.dataSource = self
         
-        title = "Heroes"            /// titulo de la vista
+        navigationItem.title = "Heroes"            /// titulo de la vista, 
         
         let xib = UINib(nibName: "TableCell", bundle: nil)      ///aqui registramos el archivo xib con nmombre de tablecell
         tableView.register(xib, forCellReuseIdentifier: "customTableCell") ///aqui con la tableView
@@ -36,7 +36,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             if let allHeroes = allHeroes {
                 self.heroes = allHeroes
+                LocalDataLayer.shared.save(heroes: allHeroes)
                 
+                // refresh tableView with new data fetched from the API
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -65,6 +67,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.titleLabel.text = heroe.name
         cell.descLabel.text = heroe.description
         cell.accessoryType = .disclosureIndicator               /// flechita para luego pasar a la siguente vista
+        cell.selectionStyle = .none                 ///evita que se pongo el fondo marron al clicar (haciendo + profesional que el metodo "deselectRow"
         
         return cell
     }
@@ -72,6 +75,14 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return 150
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { ///para pasar a la vista de detalles de heroe
+        //tableView.deselectRow(at: indexPath, animated: false)   ///para que al clicar se quite el fondo marror del seleccionado
+        let heroe = heroes[indexPath.row]
+        let detailsView = DetailsViewController()
+        detailsView.heroe = heroe
+        navigationController?.pushViewController(detailsView, animated: true)
+
+    }
     
 }
 

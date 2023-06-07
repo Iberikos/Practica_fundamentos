@@ -76,9 +76,16 @@ final class NetworkLayer {
         urlRequest.setValue("Bearer \(token ?? "")", forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = urlComponets.query?.data(using: .utf8)
         
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion(nil, error)
+                return
+            }
+            
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                completion(nil, NetworkError.statusCode(code: statusCode))
+                print ("Error loading URLÑ: Status error --> ", (response as? HTTPURLResponse)?.statusCode ?? -1)
                 return
             }
             
@@ -98,4 +105,39 @@ final class NetworkLayer {
         task.resume()
     }
     
+    func fetchTransformations(token: String?, heroeId: String?, completion: @escaping ([Transformations]?, Error?) -> Void) {
+        guard let url = URL(string: "https://dragonball.keepcoding.education/api/heros/tranformations") else {
+            completion(nil, NetworkError.malformedURL)
+            return
+        }
+        
+        var urlComponets = URLComponents()
+        urlComponets.queryItems = [URLQueryItem(name: "id", value: heroeId ?? "")]
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("Bearer \(token ?? "")", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = urlComponets.query?.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, NetworkError.noData)
+                return
+            }
+            
+            guard let transformations = try? JSONDecoder().decode([Transformations].self, from: data) else {
+                completion(nil, NetworkError.decodingFailed)
+                return
+            }
+            
+            // YU-HUUU!!1
+            completion(transformations, nil)
+        }
+        task.resume()
+    }
 }
