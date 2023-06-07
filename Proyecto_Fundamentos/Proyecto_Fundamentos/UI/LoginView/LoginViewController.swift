@@ -22,9 +22,9 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emailTextField.center.x -= view.bounds.width           ///esto hace que salga el cuadro de login desde fuera hacia adentro
+        emailTextField.center.x -= view.bounds.width
         passwordTextField.center.x -= view.bounds.width
-        loginButton.alpha = 0                   ///"alpha" es una funcion para indicar la visibilidad 0= nada, 1 = 100%
+        loginButton.alpha = 0
         
         UIView.animate(withDuration: 2,
                        delay: 0,
@@ -60,7 +60,6 @@ class LoginViewController: UIViewController {
                 print(token)
                 
                 DispatchQueue.main.async {
-                    //UIApplication.shared.keyWindow?.rootViewController = HomeTabBarController()
                     
                     UIApplication
                         .shared
@@ -68,7 +67,6 @@ class LoginViewController: UIViewController {
                         .compactMap{ ($0 as? UIWindowScene)?.keyWindow }
                         .first?
                         .rootViewController = HomeTabBarController() 
-                    ///Forma oficial que tiene apple de movernos desde el Login al homeTabBar
                 }
                 
             } else {

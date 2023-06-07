@@ -30,15 +30,11 @@ class TransformationsViewController: UIViewController, UITableViewDelegate, UITa
 
     // Delegate & DataSouerce methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transformations.count //Para que pinte tantas elementos como haya en la lista
+        return transformations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) /// aqui definimos una celda, utilizamos el primer metodo
-        //        let weekDayName = singleRows[indexPath.row]
-        //        cell.textLabel?.text = weekDayName
-        //
-        //        return cell
+      
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customTableCell", for: indexPath) as! TableCell
         let heroe = transformations[indexPath.row]
@@ -46,12 +42,12 @@ class TransformationsViewController: UIViewController, UITableViewDelegate, UITa
         cell.IconImageView.setImage(url: heroe.photo)
         cell.titleLabel.text = heroe.name
         cell.descLabel.text = heroe.description
-        cell.accessoryType = .disclosureIndicator               /// flechita para luego pasar a la siguente vista
-        cell.selectionStyle = .none                 ///evita que se pongo el fondo marron al clicar (haciendo + profesional que el metodo "deselectRow"
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
         
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { ///esta funcion es para elegir la altura de las celdas
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 
         return 150
     }
 

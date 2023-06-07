@@ -45,9 +45,9 @@ class CollectorViewController: UIViewController, UICollectionViewDelegate, UICol
         
         return cell
     }
-    // Funcion que sirve para marcar el número de celdas de la View
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemsInRow: CGFloat = 2     ///al definir la variable si le pones CGFloat le "obligas" a que sea un Float
+        let itemsInRow: CGFloat = 2     
         let spacing: CGFloat = 12
         let totalSpacing: CGFloat = (itemsInRow - 1) * spacing
         let finalWidth = (collectionView.frame.width - totalSpacing) / itemsInRow
