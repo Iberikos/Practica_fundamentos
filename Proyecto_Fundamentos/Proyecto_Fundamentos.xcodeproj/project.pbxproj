@@ -33,6 +33,10 @@
 		8963F0222A1E7C0A00F12C8B /* NetwortkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F0212A1E7C0A00F12C8B /* NetwortkLayer.swift */; };
 		8963F0242A1E7C1B00F12C8B /* LocalDataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F0232A1E7C1B00F12C8B /* LocalDataLayer.swift */; };
 		8963F0272A1E7D8200F12C8B /* Heroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F0262A1E7D8200F12C8B /* Heroe.swift */; };
+		89AF758B2A3057B600F01873 /* HeroeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF758A2A3057B600F01873 /* HeroeTests.swift */; };
+		89AF758D2A30593200F01873 /* Heroe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F0262A1E7D8200F12C8B /* Heroe.swift */; };
+		89AF758F2A305CA200F01873 /* TransformationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AF758E2A305CA200F01873 /* TransformationsTests.swift */; };
+		89AF75902A305CE100F01873 /* Transformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8910D4C52A2DD6D3004FE2AB /* Transformations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,8 @@
 		8963F0212A1E7C0A00F12C8B /* NetwortkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwortkLayer.swift; sourceTree = "<group>"; };
 		8963F0232A1E7C1B00F12C8B /* LocalDataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataLayer.swift; sourceTree = "<group>"; };
 		8963F0262A1E7D8200F12C8B /* Heroe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heroe.swift; sourceTree = "<group>"; };
+		89AF758A2A3057B600F01873 /* HeroeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeTests.swift; sourceTree = "<group>"; };
+		89AF758E2A305CA200F01873 /* TransformationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				894BF9E429E2B9C100572808 /* Proyecto_FundamentosTests.swift */,
+				89AF758A2A3057B600F01873 /* HeroeTests.swift */,
+				89AF758E2A305CA200F01873 /* TransformationsTests.swift */,
 			);
 			path = Proyecto_FundamentosTests;
 			sourceTree = "<group>";
@@ -433,6 +441,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				894BF9E529E2B9C100572808 /* Proyecto_FundamentosTests.swift in Sources */,
+				89AF758B2A3057B600F01873 /* HeroeTests.swift in Sources */,
+				89AF758F2A305CA200F01873 /* TransformationsTests.swift in Sources */,
+				89AF758D2A30593200F01873 /* Heroe.swift in Sources */,
+				89AF75902A305CE100F01873 /* Transformations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
